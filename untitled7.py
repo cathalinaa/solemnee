@@ -104,11 +104,4 @@ if data is not None:
         # Botón para descargar los datos filtrados
         st.subheader("Exportar Datos Filtrados")
         formato = st.radio("Elige el formato para descargar:", ('CSV', 'Excel'))
-        
-tipo_grafico = st.selectbox('Selecciona el tipo de gráfico', ['Barras', 'Líneas', 'Área'])
-if tipo_grafico == 'Barras':
-    st.bar_chart(data[sel_colum[0]])
-elif tipo_grafico == 'Líneas':
-    st.line_chart(hist_values)
-else:
-    st.area_chart(hist_values)
+
