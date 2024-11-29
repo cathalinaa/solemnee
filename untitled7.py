@@ -100,8 +100,24 @@ if data is not None:
                     excel = convertir_a_excel(df_filtrado)
                     st.download_button("Descargar Excel", excel, "datos_filtrados.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
+ columna_ordenar = st.selectbox('Selecciona una columna para ordenar', df_seleccionado.columns)
+    orden = st.radio('Selecciona el orden:', ('Ascendente', 'Descendente'))
 
-        # Botón para descargar los datos filtrados
-        st.subheader("Exportar Datos Filtrados")
-        formato = st.radio("Elige el formato para descargar:", ('CSV', 'Excel'))
+    # Ordenar el DataFrame según la columna seleccionada y el orden elegido
+    df_ordenado = df_seleccionado.sort_values(by=columna_ordenar, ascending=(orden == 'Ascendente'))
+    
+    # Mostrar el DataFrame ordenado
+    st.write('DataFrame Ordenado:')
+    st.write(df_ordenado)
+
+    columna_filtro = st.selectbox("Selecciona una columna para filtrar:", df.select_dtypes(include=['number']).columns)
+    if columna_filtro:
+        min_val, max_val = st.slider(
+            f"Selecciona el rango para {columna_filtro}:",
+            float(df[columna_filtro].min()),
+            float(df[columna_filtro].max()),
+            (float(df[columna_filtro].min()), float(df[columna_filtro].max()))
+
+
+
 
