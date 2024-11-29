@@ -100,7 +100,7 @@ if data is not None:
                     excel = convertir_a_excel(df_filtrado)
                     st.download_button("Descargar Excel", excel, "datos_filtrados.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
- columna_ordenar = st.selectbox('Selecciona una columna para ordenar', df_seleccionado.columns)
+    columna_ordenar = st.selectbox('Selecciona una columna para ordenar', df_seleccionado.columns)
     orden = st.radio('Selecciona el orden:', ('Ascendente', 'Descendente'))
 
     # Ordenar el DataFrame según la columna seleccionada y el orden elegido
