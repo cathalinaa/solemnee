@@ -99,17 +99,12 @@ if data is not None:
                 elif formato == 'Excel':
                     excel = convertir_a_excel(df_filtrado)
                     st.download_button("Descargar Excel", excel, "datos_filtrados.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-                      
-    columna_ordenar = st.selectbox('Selecciona una columna para ordenar', df_seleccionado.columns)
-    orden = st.radio('Selecciona el orden:', ('Ascendente', 'Descendente'))
 
-    # Ordenar el DataFrame según la columna seleccionada y el orden elegido
-    df_ordenado = df_seleccionado.sort_values(by=columna_ordenar, ascending=(orden == 'Ascendente'))
-    
-    # Mostrar el DataFrame ordenado
-    st.write('DataFrame Ordenado:')
-    st.write(df_ordenado)
 
+        # Botón para descargar los datos filtrados
+        st.subheader("Exportar Datos Filtrados")
+        formato = st.radio("Elige el formato para descargar:", ('CSV', 'Excel'))
+        
 tipo_grafico = st.selectbox('Selecciona el tipo de gráfico', ['Barras', 'Líneas', 'Área'])
 if tipo_grafico == 'Barras':
     st.bar_chart(data[sel_colum[0]])
